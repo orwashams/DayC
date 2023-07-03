@@ -5,7 +5,7 @@ import type { NextRequest } from "next/server";
 export default withClerkMiddleware((_req: NextRequest) => {
   return NextResponse.next();
 });
-
+//test push
 // Stop Middleware running on static files
 export const config = {
   matcher: [
