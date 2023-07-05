@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TRPCProvider } from "./utils/trpc";
 
@@ -10,9 +10,14 @@ import { tokenCache } from "./utils/cache";
 import Constants from "expo-constants";
 
 export const App = () => {
+  useEffect(() => {
+    console.log(Constants.expoConfig?.extra?.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
+  }, []);
   return (
     <ClerkProvider
-      publishableKey={Constants.expoConfig?.extra?.CLERK_PUBLISHABLE_KEY}
+      publishableKey={
+        Constants.expoConfig?.extra?.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+      }
       tokenCache={tokenCache}
     >
       <SignedIn>

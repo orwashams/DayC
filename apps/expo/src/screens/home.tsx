@@ -9,6 +9,8 @@ import type { AppRouter } from "@acme/api";
 
 import { trpc } from "../utils/trpc";
 
+
+
 const SignOut = () => {
   const { signOut } = useAuth();
   return (
@@ -33,6 +35,8 @@ const PostCard: React.FC<{
     </View>
   );
 };
+
+
 
 const CreatePost: React.FC = () => {
   const utils = trpc.useContext();
