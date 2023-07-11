@@ -22,6 +22,9 @@ const PostCard: React.FC<{
 const Home: NextPage = () => {
   const postQuery = trpc.post.all.useQuery();
 
+  const workdayQuery = trpc.workday.all.useQuery();
+  console.log(workdayQuery.data?.map((p) => p.note));
+
   return (
     <>
       <Head>
