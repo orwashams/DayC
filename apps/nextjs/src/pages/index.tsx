@@ -23,7 +23,7 @@ const Home: NextPage = () => {
   const postQuery = trpc.post.all.useQuery();
 
   const workdayQuery = trpc.workday.all.useQuery();
-  console.log(workdayQuery.data?.map((p) => p.note));
+  console.log(workdayQuery.data?.map((p) => p.createdAt.toLocaleDateString()));
 
   return (
     <>
@@ -42,13 +42,9 @@ const Home: NextPage = () => {
           <div className="flex h-[60vh] justify-center overflow-y-scroll  px-4 text-2xl">
             {postQuery.data ? (
               <div className="flex flex-col gap-4">
-                {postQuery.data?.map(
-                  (
-                    p: inferProcedureOutput<AppRouter["post"]["all"]>[number],
-                  ) => {
-                    return <PostCard key={p.id} post={p} />;
-                  },
-                )}
+                {postQuery.data?.map((p) => {
+                  return <PostCard key={p.id} post={p} />;
+                })}
               </div>
             ) : (
               <p>Loading..</p>
